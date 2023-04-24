@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Disable text globbing
+set -f
+
 # Initialize variable to store neofetch output
 neofetch_output=""
 
@@ -16,4 +19,7 @@ eval $command
 
 # Use a derivative of the above syntax to request a system rating from gpt
 command="sgpt --chat .system \"Please rate this system: $(neofetch --score)\""
+
+# Evaluate the command with text globbing enabled
+set +f
 eval $command
